@@ -1,3 +1,4 @@
+""
 #Tokenization --- splits sentence into words
 import nltk
 from nltk.tokenize import word_tokenize
@@ -70,3 +71,46 @@ def remove(text):
 i = "hello!@@#$$& world"
 c = remove(i)
 print(c)
+
+#remove punctuation
+
+import string
+def remove_punctuation (text):
+ return text.translate(str.maketrans('','',string.punctuation))
+text = "hello, world! let's remove the punctuation."
+clean_text = remove_punctuation (text)
+print(clean_text)
+""
+# bag of words
+
+from sklearn.feature_extraction.text import CountVectorizer
+
+documents = [
+    "I love programming in python",
+    "Python is great for data science",
+    "I love learning new programming languages"
+]
+
+vectorizer = CountVectorizer()
+
+X = vectorizer.fit_transform(documents)
+
+feature_names = vectorizer.get_feature_names_out()
+
+print("Feature Names:", feature_names)
+print("Bag of Words model:\n", X.toarray())
+
+
+# N-gram function
+
+def n_grams(text, n):
+    words = text.split()
+    return [tuple(words[i:i+n]) for i in range(len(words) - n + 1)]
+
+text = "I love programming in python"
+n = 3
+
+print(n_grams(text, n))
+
+
+
