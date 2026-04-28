@@ -1,7 +1,7 @@
 import google.generativeai as genai
 import os
 
-genai.configure(api_key="AIzaSyCoJ5Iyr3QYdiZqcf3FNafzm8PpAOGpb58")
+genai.configure(api_key="your_api_key")
 model = genai.GenerativeModel("gemini-3.1-flash-lite-preview")
 chat = model.start_chat(history=[])
 print("Keer's (Type 'exit' to quit)")
